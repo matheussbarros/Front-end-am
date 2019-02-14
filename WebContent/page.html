@@ -1,0 +1,333 @@
+<%@include file="header.jsp"%>
+
+<%
+	String user = null;
+	Usuario usuario = (Usuario) session.getAttribute("user");
+
+	if (session.getAttribute("user") == null) {
+		response.sendRedirect("login.jsp");
+	} else if (usuario.getNivel() != 1) {
+		response.sendRedirect("login.jsp");
+	} else {
+		user = usuario.getNome();
+	}
+%>
+
+<div class="wrapper">
+
+
+
+	<nav id="sidebar">
+		<div class="sidebar-header">
+
+			<!--  <div class="avatar">
+                                
+                                    <img src="img/instituicao.png" alt="" title="">
+                                </div> -->
+
+			<h3>
+				Olá,
+				<%=user%></h3>
+			<strong>BS</strong>
+		</div>
+
+		<ul class="list-unstyled components nav" id="myTab" role="tablist">
+
+			<li class=" nav-item active"><a class="nav-link"
+				id="cad-med-tab" data-toggle="tab" href="#cad-medicos" role="tab"
+				aria-controls="cad-medicos">Cadastrar Médicos</a></li>
+
+			<li class="nav-item"><a class="nav-link" id="med-tab"
+				data-toggle="tab" href="#lista-medicos" role="tab"
+				aria-controls="lista-medicos">Lista de Médicos</a></li>
+
+			<li class="nav-item"><a class="nav-link" id="cad-pac-tab"
+				data-toggle="tab" href="#cad-pac" role="tab" aria-controls="cad-pac">Cadastrar
+					Pacientes</a></li>
+
+			<li class="nav-item"><a class="nav-link" id="pac-tab"
+				data-toggle="tab" href="#lista-pacientes" role="tab"
+				aria-controls="lista-pacientes">Lista de Pacientes</a></li>
+
+			<br>
+
+			<form method="post" action="logout">
+
+				<button type="submit" id="btn-logout" value="logout"
+					class="btn btn-success">Sair</button>
+			</form>
+		</ul>
+	</nav>
+
+
+	<div class="tab-content" id="content">
+
+		<!-- <div class="tab-content">
+			<div class="tab-pane" id="lista-medicos" role="tabpanel"
+				aria-labelledby="med-tab">LISTA DE MEDICOS</div>
+		</div>-->
+		<div class="tab-pane fade show active" id="cad-medicos"
+			role="tabpanel" aria-labelledby="cad-med-tab">
+			<h2>Cadastrar novo Médico</h2>
+			<form id="loginform" class="form-horizontal" role="form">
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="nome" value=""
+						placeholder="Nome" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="crm"
+						placeholder="CRM" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="email" class="form-control" name="especialidade"
+						placeholder="Especialidade" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="email"
+						placeholder="Email" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="senha"
+						placeholder="senha" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="fone"
+						placeholder="Telefone" required>
+				</div>
+
+				<h5>Endereco</h5>
+
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="logradouro"
+						placeholder="Nome da Rua/Av" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="numero"
+						placeholder="Numero" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="email" class="form-control" name="bairro"
+						placeholder="Bairro" required>
+				</div>
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="cidade"
+						placeholder="Cidade" required>
+				</div>
+
+				<div style="margin-bottom: 25px" class="input-group">
+					<input type="text" class="form-control" name="estado"
+						placeholder="Estado" required>
+				</div>
+				<div class="input-group"></div>
+				<div style="margin-top: 10px" class="form-group">
+					<!-- Button -->
+					<div class="col-sm-12 controls">
+						<button type="submit" id="btn-login" href="#"
+							class="btn btn-success">Cadastrar</button>
+					</div>
+					<div class="col-sm-12 controls"></div>
+				</div>
+			</form>
+		</div>
+
+		<div class="tab-pane fade" id="lista-medicos" role="tabpanel"
+			aria-labelledby="med-tab">
+
+			<ul class="list-group">
+
+				<%
+					List<Medico> medicos = new MedicoDAO().listarMedico();
+					for (Medico m : medicos) {
+				%>
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center"
+					data-id="<%=m.getCod()%>"><%=m.getNome()%> <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span></li>
+
+				<%
+					}
+				%>
+				<!-- <li
+					class="list-group-item d-flex justify-content-between align-items-center" data-id="">
+					Nome Paciente <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span>
+				</li>
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center" data-id="">
+					Nome Paciente <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span>
+				</li>-->
+			</ul>
+
+		</div>
+
+		<div class="tab-pane fade" id="cad-pac" role="tabpanel"
+			aria-labelledby="med-tab">
+			<div class="tab-pane fade show active" id="cad-medicos"
+				role="tabpanel" aria-labelledby="cad-med-tab">
+				<h2>Cadastrar Paciente</h2>
+				<form id="loginform" class="form-horizontal" role="form">
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="nome" value=""
+							placeholder="Nome" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="cpf"
+							placeholder="CPF" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="dt-nasc"
+							placeholder="Data de Nascimento" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="email"
+							placeholder="Email" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="senha"
+							placeholder="senha" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="fone"
+							placeholder="Telefone" required>
+					</div>
+
+					<h5>Endereco</h5>
+
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="logradouro"
+							placeholder="Nome da Rua/Av" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="numero"
+							placeholder="Numero" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="email" class="form-control" name="bairro"
+							placeholder="Bairro" required>
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="cidade"
+							placeholder="Cidade" required>
+					</div>
+
+					<div style="margin-bottom: 25px" class="input-group">
+						<input type="text" class="form-control" name="estado"
+							placeholder="Estado" required>
+					</div>
+
+					<div class="input-group"></div>
+					<div style="margin-top: 10px" class="form-group">
+						<!-- Button -->
+						<div class="col-sm-12 controls">
+							<button type="submit" id="btn-login" href="#"
+								class="btn btn-success">Cadastrar</button>
+						</div>
+						<div class="col-sm-12 controls"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="lista-pacientes" role="tabpanel"
+			aria-labelledby="med-tab">
+
+			<ul class="list-group">
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center"
+					data-id="2">Nome Paciente <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span>
+				</li>
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center"
+					data-id="3">Nome Paciente <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span>
+				</li>
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center"
+					data-id="4">Nome Paciente <span
+					class="badge badge-primary badge-pill btnDelete"
+					data-toggle="modal" data-target="#exampleModal"><i
+						class="fas fa-times"></i></span>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Excluir
+							Usuario: ?</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<!-- <label for="recipient-name" class="col-form-label">Recipient:</label> -->
+								<input type="hidden" name="cod" value="teste"
+									class="form-control" id="recipient-name">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Confirma</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Não</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!--  <div class="line"></div> -->
+
+
+
+	</div>
+
+</div>
+
+
+
+<%@include file="footer.jsp"%>
+
+
+<script>
+	$('#exampleModal').on('show.bs.modal', function(event) {
+		var button = $(event.relatedTarget) // Button that triggered the modal
+		var recipient = button.data('whatever') // Extract info from data-* attributes
+		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		var paciente = button.parent("li").text();
+		var dataId = button.parent("li").attr('data-id');
+		console.log(paciente);
+		console.log(button);
+		console.log(dataId);
+		var modal = $(this)
+		//modal.find('.modal-title').text('Deletar paciente ' + paciente +'?')
+		modal.find(".modal-body input[name='cod']").val(dataId);
+	})
+</script>
+
+
+</body>
+
+</html>

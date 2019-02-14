@@ -1,0 +1,288 @@
+/*Defauts*/
+
+.pad-t2 {
+    padding: 20px 0px;
+}
+
+.pad-t4 {
+    padding: 40px 0px;
+}
+
+.pad-top4 {
+    padding-top: 40px;
+}
+
+img.img-full {
+    width: 100%;
+}
+
+.c-style-1 {
+
+    background: #f3feff;
+}
+
+.c-style-2 {
+
+    background: #ffffff;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+/**/
+
+/*header font-family: 'Montserrat', sans-serif; */
+
+header {
+    padding: 10px;
+    background: #fff;
+        height: 70px;
+
+}
+
+.nav-pills .nav-link.active {
+    background: #05be5a;
+}
+
+ul.navbar-nav {
+    font-family: 'Montserrat', sans-serif;
+
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #4a4a4a;
+    border-bottom: 1px transparent solid;
+    transition: all 0.5s;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #4a4a4a;
+
+    border-bottom: 1px #ccc solid;
+}
+
+li.nav-item {
+    margin-left: 14px;
+}
+
+.custom-nav-link {
+
+    border: 1px #7f88ff solid;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 140px;
+}
+
+.fixed-top {
+ 
+    background: #fff;
+        padding: 10px 0px; 
+    box-shadow: 1px 1px 1px 1px #0000003d;
+}
+
+
+/*Fim header */
+
+/*Banner*/
+
+.banner {
+    display: block;
+    background-color: #0c9b33;
+    width: 100%;
+    height: 400px;
+    background-image: url(../img/banner.jpg);
+    font-family: 'Montserrat', sans-serif;
+    background-position: center;
+
+}
+
+.banner h1 {
+    font-weight: 600;
+}
+
+.banner h1,
+.banner p {
+    color: #fff;
+}
+
+.banner .jumbotron {
+    background: transparent;
+
+}
+
+/*fim Banner*/
+
+/*Conteudo */
+
+.conteudo {
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+}
+
+.conteudo h2 {
+    color: #0050be;
+    font-weight: 600;
+}
+
+
+.conteudo p {
+    color: #636363;
+    font-size: 18px;
+}
+
+
+
+/*fim Conteudo*/
+
+/*footer */
+
+footer {
+    padding: 30px 0px 20px 0px;
+    background: #0097cb;
+}
+
+footer p {
+    text-align: center;
+    color: #fff;
+}
+
+
+/* fim footer */
+
+/*login */
+
+body.login {
+        background: #e0e0e0;
+}
+
+.form-horizontal .form-group {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-info {
+    border-color: #bce8f1;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.panel-info > .panel-heading {
+    color: #ffffff;
+    background-color: #004d9b;
+    border-color: #bce8f1;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px 0px 0px 4px;
+    border-right: none;
+}
+
+.smal-txt {
+    float: right;
+    font-size: 80%;
+    position: relative;
+    top: -10px;
+}
+
+.smal-txt a{
+    color: #fff;
+}
+
+.copy-login {
+    border-top: 1px #ccc solid;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 30px;
+}
+
+.copy-login p {
+
+    font-size: 12px;
+}
+
+/*admin */
+
+@media (min-width: 992px) #mainNav .navbar-collapse .navbar-sidenav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-top: 56px;
+}
+
+@media (max-width: 768px) {
+    
+   .banner h1 {
+ 
+    font-size: 35px;
+} 
+    
+   .banner p.lead {
+    font-size: 16px;
+}
+    
+    
+    .banner {
+  
+    height: 270px;
+    
+}
+
+.navbar-sidenav > .nav-item {
+    width: 250px;
+    padding: 0;
+}
